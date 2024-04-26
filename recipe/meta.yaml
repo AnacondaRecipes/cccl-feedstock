@@ -17,7 +17,6 @@ source:
 build:
   number: 0
   skip: true  # [osx or (linux and s390x)]
-  skip: true  # [cuda_compiler_version != "11.8"]
   ignore_run_exports_from:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
