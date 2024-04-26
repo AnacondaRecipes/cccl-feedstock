@@ -1,0 +1,5 @@
+# To bootstrap. Should be removed when these entries go into the aggregate cbc.yaml.
+cuda_compiler_version:         # [linux and x86_64]
+  - 12.3                       # [linux and x86_64]
+cuda_compiler:                 # [linux and x86_64]
+  - cuda-nvcc                  # [linux and x86_64]
