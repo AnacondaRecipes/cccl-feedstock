@@ -2,3 +2,4 @@
 # This file should be removed the second time this package is built.
 channels:
   - lc030263
+upload_channels: [defaults, lc030263]
