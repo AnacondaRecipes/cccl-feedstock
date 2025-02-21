@@ -18,14 +18,14 @@ build:
   number: 0
   skip: true  # [osx or (linux and s390x)]
   ignore_run_exports_from:
-    - {{ stdlib("c") }}
+    # - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - {{ compiler("cuda") }}
 
 requirements:
   build:
-    - {{ stdlib("c") }}
+    # - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - {{ compiler("cuda") }}
@@ -34,7 +34,7 @@ requirements:
 
 test:
   requires:
-    - {{ stdlib("c") }}
+    # - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - {{ compiler("cuda") }}
