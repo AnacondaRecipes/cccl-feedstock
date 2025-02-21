@@ -1,5 +1,3 @@
-# This uses the cuda compiler v12.3, built in a private channel, to bootstrap.
-# This file should be removed the second time this package is built.
-channels:
-  - lc030263
-upload_channels: [defaults, lc030263]
+upload_without_merge: True
+
+channels: [cuda12_def]
