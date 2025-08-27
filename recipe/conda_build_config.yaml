@@ -1,3 +1,0 @@
-# To bootstrap. Should be removed when these entries go into the aggregate cbc.yaml.
-cuda_compiler_version:
-  - 12.8
