@@ -4,6 +4,4 @@ build_env_vars:
 
 staging_channel_upload_target: cudatest
 channels:
-- defaults
 - https://staging.continuum.io/pbp/cudatest
-
