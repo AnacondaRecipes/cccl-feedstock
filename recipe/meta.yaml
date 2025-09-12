@@ -1,5 +1,7 @@
 {% set name = "cccl" %}
 {% set version = "2.7.0" %}
+{% set cuda_compiler_version_min = "11.8" %}
+
 
 # CUDA C++ Core Libraries (CCCL) includes thrust, cub, and libcudacxx. These are header-only libraries.
 # The cccl package ships CCCL headers in the environment's include directory for use in downstream recipes that require CCCL. It follows CCCL upstream versioning. Use this package to say, "I want a specific version of CCCL headers when building my package (which may be newer than the versions shipped in the latest CUDA Toolkit)."
@@ -17,7 +19,9 @@ source:
 build:
   number: 0
   skip: true  # [osx]
-  skip: true  # [cuda_compiler_version != "11.8"]
+  #skip: true  # [cuda_compiler_version != "11.8"]
+  # cccl is header-only; it's enough to build it once (and ignore the run-exports)
+  skip: true  # [cuda_compiler_version != cuda_compiler_version_min]
   ignore_run_exports_from:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
