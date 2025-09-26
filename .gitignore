@@ -5,6 +5,7 @@
 
 # Ignore all files and folders in root
 *
+!/abs.yaml
 !/conda-forge.yml
 !/abs.yaml
 
