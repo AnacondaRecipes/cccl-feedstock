@@ -1,5 +1,5 @@
 {% set name = "cccl" %}
-{% set version = "2.7.0" %}
+{% set version = "3.0.1" %}
 
 # CUDA C++ Core Libraries (CCCL) includes thrust, cub, and libcudacxx. These are header-only libraries.
 # The cccl package ships CCCL headers in the environment's include directory for use in downstream recipes that require CCCL. It follows CCCL upstream versioning. Use this package to say, "I want a specific version of CCCL headers when building my package (which may be newer than the versions shipped in the latest CUDA Toolkit)."
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://github.com/NVIDIA/cccl/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 50e9c8bba572a217e7d6748b8c93e76fc42f7c125f6d1da7f117240a14d9a31b
+  sha256: 8dbb11d6b1b16c84ed8511cf5e816d797598f627dbe8960a3aab0c9214aa308b
 
 build:
   number: 0
@@ -22,15 +22,20 @@ build:
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - {{ compiler("cuda") }}
+    - libcurand-dev
 
 requirements:
+  host:
+    - libcurand-dev
   build:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
     - {{ compiler("cuda") }}
     - cmake
-    - ninja
+    - ninja-base
+    # Downloading Catch2 via CPM.cmake requires 'git' on Windows
+    - msys2-git  # [win]
 
 test:
   requires:
@@ -39,7 +44,7 @@ test:
     - {{ compiler("cxx") }}
     - {{ compiler("cuda") }}
     - cmake
-    - ninja
+    - ninja-base
   files:
     - test_cmake
     - verify-version.cmake  # [linux]
@@ -75,8 +80,14 @@ about:
   license: Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND BSL-1.0 AND NCSA AND MIT AND LicenseRef-NVIDIA-Software-License
   license_url: https://github.com/NVIDIA/cccl/blob/main/LICENSE
   summary: CUDA C++ Core Libraries
+  description: |
+    CUDA C++ Core Libraries (CCCL) includes thrust, cub, and libcudacxx.
+    These are header-only libraries.
   doc_url: https://nvidia.github.io/cccl/
+  dev_url: https://github.com/NVIDIA/cccl
 
 extra:
+  skip-lints:
+    - license_file_overspecified
   recipe-maintainers:
     - conda-forge/cuda
