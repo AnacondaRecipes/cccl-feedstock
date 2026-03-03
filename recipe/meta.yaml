@@ -34,8 +34,9 @@ requirements:
     - {{ compiler("cuda") }}
     - cmake
     - ninja-base
-    # Downloading Catch2 via CPM.cmake requires 'git' on Windows
+    # Downloading Catch2 via CPM.cmake requires 'git'
     - msys2-git  # [win]
+    - git  # [unix]
 
 test:
   requires:
