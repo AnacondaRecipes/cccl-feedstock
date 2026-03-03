@@ -3,4 +3,4 @@ c_stdlib_version:  # [linux]
 
 # CCCL is a header-only library, we need to specify the CUDA compiler version for tests only
 cuda_compiler_version:
-  - 13.0
+  - "12.8"

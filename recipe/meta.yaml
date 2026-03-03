@@ -1,5 +1,5 @@
 {% set name = "cccl" %}
-{% set version = "3.1.4" %}
+{% set version = "2.8.2" %}
 
 # CUDA C++ Core Libraries (CCCL) includes thrust, cub, and libcudacxx. These are header-only libraries.
 # The cccl package ships CCCL headers in the environment's include directory for use in downstream recipes that require CCCL. It follows CCCL upstream versioning. Use this package to say, "I want a specific version of CCCL headers when building my package (which may be newer than the versions shipped in the latest CUDA Toolkit)."
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://github.com/NVIDIA/cccl/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: fe679225875b856dc31fbf63f26b8b447a02dae415c41d3815815f52aadf45a7
+  sha256: 141801ddddf5b911f64f97be66a7c75f98374bebca60f275bedec75b8eeab345
 
 build:
   number: 0
@@ -34,8 +34,9 @@ requirements:
     - {{ compiler("cuda") }}
     - cmake
     - ninja-base
-    # Downloading Catch2 via CPM.cmake requires 'git' on Windows
+    # Downloading Catch2 via CPM.cmake requires 'git'
     - msys2-git  # [win]
+    - git  # [unix]
 
 test:
   requires:
