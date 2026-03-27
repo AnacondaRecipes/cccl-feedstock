@@ -10,6 +10,7 @@ cmake %CMAKE_ARGS% ^
       -G "Ninja" ^
       -DCMAKE_BUILD_TYPE:STRING=Release ^
       -DCMAKE_INSTALL_PREFIX:PATH=%LIBRARY_PREFIX% ^
+      -DCMAKE_INSTALL_INCLUDEDIR:PATH=include/cccl ^
       -DCMAKE_INSTALL_LIBDIR:PATH=lib ^
       -DCCCL_ENABLE_UNSTABLE:BOOL=ON ^
       -DCCCL_ENABLE_CUDAX:BOOL=ON ^
@@ -22,7 +23,7 @@ cmake %CMAKE_ARGS% ^
       "%SRC_DIR%"
 if errorlevel 1 exit 1
 
-cmake --build . --target install
+cmake --build . --target install --parallel %CPU_COUNT%
 if errorlevel 1 exit 1
 
 popd
