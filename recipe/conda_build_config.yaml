@@ -1,6 +1,8 @@
 c_stdlib_version:  # [linux]
    - "2.28"        # [linux]
 
-# CCCL is a header-only library, we need to specify the CUDA compiler version for tests only
+# CCCL is a header-only library, we need to specify the CUDA compiler version for tests only.
+# The feedstock on CF uses 'cuda_compiler_version_min' variable to control the minimum version
+# needed for the tests as mentioned above. As of March 2026, its value is '12.9'.
 cuda_compiler_version:
-  - 13.0
+  - 12.9
