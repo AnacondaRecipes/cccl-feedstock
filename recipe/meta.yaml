@@ -91,7 +91,5 @@ about:
   dev_url: https://github.com/NVIDIA/cccl
 
 extra:
-  skip-lints:
-    - license_file_overspecified
   recipe-maintainers:
     - conda-forge/cuda
