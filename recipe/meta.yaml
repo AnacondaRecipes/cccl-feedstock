@@ -23,10 +23,12 @@ build:
     - {{ compiler("cxx") }}
     - {{ compiler("cuda") }}
     - libcurand-dev
+    - libcufile-dev  # [linux]
 
 requirements:
   host:
     - libcurand-dev
+    - libcufile-dev  # [linux]
   build:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
