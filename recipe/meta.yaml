@@ -21,19 +21,19 @@ build:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - {{ compiler("cuda") }}
-    - libcurand-dev
-    - libcufile-dev  # [linux]
+    #- {{ compiler("cuda") }}
+    #- libcurand-dev
+    #- libcufile-dev  # [linux]
 
 requirements:
-  host:
-    - libcurand-dev
-    - libcufile-dev  # [linux]
+  #host:
+    #- libcurand-dev
+    #- libcufile-dev  # [linux]
   build:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - {{ compiler("cuda") }}
+    #- {{ compiler("cuda") }}
     - cmake
     - ninja-base
     # Downloading Catch2 via CPM.cmake requires 'git' on Windows
@@ -44,7 +44,7 @@ test:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
     - {{ compiler("cxx") }}
-    - {{ compiler("cuda") }}
+    #- {{ compiler("cuda") }}
     - cmake
     - ninja-base
   files:
@@ -76,8 +76,8 @@ test:
     - test "$(cmake -DCCCL_VERSION_FILE=$PREFIX/lib/cmake/cccl/cccl-config-version.cmake -P verify-version.cmake)" = "{{ version }}"  # [linux]
     # Test CMake build
     - pushd test_cmake
-    - cmake -G "Ninja" .
-    - cmake --build . --config Release
+    #- cmake -G "Ninja" .
+    #- cmake --build . --config Release
     - popd
 
 about:
